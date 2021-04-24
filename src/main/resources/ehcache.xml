@@ -1,22 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
-         updateCheck="false">
-
-    <defaultCache eternal="false"
-                  maxElementsInMemory="50"
-                  overflowToDisk="false"
-                  diskPersistent="false"
-                  timeToIdleSeconds="0"
-                  timeToLiveSeconds="3"
-                  memoryStoreEvictionPolicy="LRU"/>
-
-    <cache name="sampleCache"
-           eternal="false"
-           maxElementsInMemory="100"
-           overflowToDisk="false"
-           diskPersistent="false"
-           timeToIdleSeconds="0"
-           timeToLiveSeconds="10"
-           memoryStoreEvictionPolicy="LRU"/>
-</ehcache>
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.ehcache.org/v3'
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd">
+    <cache alias="sampleCache">
+        <value-type>java.util.List</value-type>
+        <expiry>
+            <ttl unit="minutes">1</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">2</heap>
+        </resources>
+    </cache>
+</config>

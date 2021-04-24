@@ -17,18 +17,21 @@ public class TestService {
         list = new ArrayList<>();
     }
 
-    @Cacheable(value = "test")
-    public String getInformation(String info) {
+    @CacheEvict(value = "sampleCache")
+    public void createInformation() {
+        list.add("test1");
+        list.add("test2");
+        list.add("test3");
+        list.add("test4");
+    }
+
+    @Cacheable(value = "sampleCache")
+    public List<String> getInformation() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return list.stream().filter(x -> x.equals(info)).findFirst().get();
-    }
-
-    @CacheEvict(value = "test")
-    public void createInformation(String info) {
-        list.add(info);
+        return list;
     }
 }

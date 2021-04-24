@@ -19,7 +19,7 @@ public class HelloController {
 
     @RequestMapping("/generate-cache")
     public String generateCache() {
-        testService.createInformation("test");
+        testService.createInformation();
 
         return "Cache Generate Success";
     }
@@ -27,10 +27,10 @@ public class HelloController {
     @RequestMapping("/cache-test")
     public String cacheTest() {long start = System.currentTimeMillis();
 
-        testService.getInformation("test");
-        testService.getInformation("test");
-        testService.getInformation("test");
-        testService.getInformation("test");
+        log.info("{}", testService.getInformation());
+        log.info("{}", testService.getInformation());
+        log.info("{}", testService.getInformation());
+        log.info("{}", testService.getInformation());
 
         long end = System.currentTimeMillis();
         log.info("Cache : " + Long.toString(end-start));
