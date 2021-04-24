@@ -4,7 +4,6 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -17,7 +16,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group 'kr.glider'
-version '1.0-SNAPSHOT'+new Date().format("yyyyMMddHHmmss")
+version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
@@ -26,10 +25,18 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.projectlombok:lombok')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('com.h2database:h2')
+    annotationProcessor 'org.projectlombok:lombok'
+    compile 'org.projectlombok:lombok'
 
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.4.4'
+    // https://mvnrepository.com/artifact/org.ehcache/ehcache
+    implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.2'
+
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.springframework.security:spring-security-test")
