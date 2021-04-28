@@ -12,11 +12,6 @@ public class HelloController {
     @Autowired
     TestService testService;
 
-    @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
-    }
-
     @RequestMapping("/generate-cache")
     public String generateCache() {
         testService.createInformation();
