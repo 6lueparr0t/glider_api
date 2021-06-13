@@ -1,0 +1,14 @@
+--https://www.baeldung.com/spring-boot-h2-database
+
+DROP TABLE IF EXISTS GLIDER_USER_TEST;
+
+CREATE TABLE GLIDER_USER_TEST (
+  ID INT AUTO_INCREMENT  PRIMARY KEY,
+  FIRST_NAME VARCHAR(200) NOT NULL,
+  LAST_NAME VARCHAR(200) DEFAULT NULL
+);
+
+INSERT INTO GLIDER_USER_TEST (FIRST_NAME, LAST_NAME) VALUES
+  ('Aliko', 'Dangote'),
+  ('Bill', 'Gates'),
+  ('Folrunsho', 'Alakija');
