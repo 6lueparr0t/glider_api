@@ -8,7 +8,7 @@ spring:
     show_sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MariaDB103Dialect
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         storage_engine: innodb
   session:
     store-type: jdbc
@@ -19,13 +19,10 @@ spring:
       settings:
         trace: false
         web-allow-others: false
-  cache:
-    jcache:
-      config: classpath:ehcache.xml
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
-# password: ENC(txE8aNs0QkHSsVPRS7gVldm90F5SBwPW8rY/G8okDaY=) ## test
+
 ---
 # local 환경
 spring:
@@ -36,7 +33,8 @@ spring:
       driver-class-name: org.h2.Driver
       jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
       username: sa
-#      password: password
+      ## password: test
+      password: ENC(txE8aNs0QkHSsVPRS7gVldm90F5SBwPW8rY/G8okDaY=)
 server:
   port: 8080
 
